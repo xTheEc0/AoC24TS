@@ -11,7 +11,6 @@ const templateTargets = (dayName: string) =>
         ['scripts/templates/main.template.ejs', `src/${dayName}/main.ts`],
         ['scripts/templates/part1.template.ejs', `src/${dayName}/part1.ts`],
         ['scripts/templates/part2.template.ejs', `src/${dayName}/part2.ts`],
-        ['scripts/templates/readme.template.ejs', `src/${dayName}/README.md`],
         ['scripts/templates/day.test.template.ejs', `test/${dayName}.test.ts`],
     ] as const;
 
