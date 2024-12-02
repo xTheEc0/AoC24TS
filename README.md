@@ -5,17 +5,19 @@
 
 A template for [Advent of Code](https://adventofcode.com) written in Typescript with Node.
 
-(Adapted from https://github.com/ljgago - repo not available)
+(Adapted from <https://github.com/ljgago> - repo not available)
 
 ## Features
 
 ### Core Functionality
+
 - Automatic file generation for each day's challenge
 - Automatic input download from Advent of Code
 - Test-driven development setup
 - Bun runtime for fast execution
 
 ### Enhanced String Processing
+
 The project includes a robust `StringView` class for efficient string manipulation:
 
 - **Unicode Support**
@@ -34,6 +36,7 @@ The project includes a robust `StringView` class for efficient string manipulati
   - Floating-point parsing with proper precision
 
 ### Data Structure Examples
+
 The project includes detailed examples for various data structures that can help in solving puzzles, and just in general!
 
 - [Binary Heap](lib/utils/data/BINARY_HEAP.md) - Priority queues and scheduling
@@ -46,7 +49,9 @@ The project includes detailed examples for various data structures that can help
 Each example includes practical use cases and implementation patterns.
 
 ### Benchmarking
+
 Built-in benchmarking utilities for performance testing:
+
 ```bash
 bun run lib/utils/array.bench.ts <function-name> [options]
 ```
@@ -102,17 +107,20 @@ sv.reset();
 
 You can generate all necessary files for use in the event with a simple command:
 
-    $ bun gen day01
+```bash
+    bun gen day01
+```
 
 This command generates these files:
 
+```bash
     * creating src/day01/resources/input.txt
     * creating src/day01/index.ts
     * creating src/day01/main.ts
     * creating src/day01/part1.ts
     * creating src/day01/part2.ts
-    * creating src/day01/README.md
     * creating test/day01.test.spec.ts
+```
 
 ## Config
 
