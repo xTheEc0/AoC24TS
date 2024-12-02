@@ -81,12 +81,8 @@ export function runBenchmark(testName: string, testCases: TestCase[], options: B
 
     console.log('\nResults:');
     console.log('─'.repeat(50));
-    console.log(
-        `${chalk.bold('Mean:')}      ${chalk.green(formatTime(stats.mean))} ±${chalk.yellow(formatTime(stats.stdDev))}`,
-    );
-    console.log(
-        `${chalk.bold('Range:')}     ${chalk.blue(formatTime(stats.min))} to ${chalk.blue(formatTime(stats.max))}`,
-    );
+    console.log(`${chalk.bold('Mean:')}      ${chalk.green(formatTime(stats.mean))} ±${chalk.yellow(formatTime(stats.stdDev))}`);
+    console.log(`${chalk.bold('Range:')}     ${chalk.blue(formatTime(stats.min))} to ${chalk.blue(formatTime(stats.max))}`);
     console.log(`${chalk.bold('Samples:')}   ${chalk.white(options.runs.toLocaleString())} runs`);
     if (options.warmup > 0) {
         console.log(`${chalk.bold('Warmup:')}    ${chalk.white(options.warmup.toLocaleString())} iterations`);

@@ -1,14 +1,5 @@
 import { describe, expect, test } from 'bun:test';
-import {
-    type Color,
-    colorToHex,
-    colorToHexString,
-    colorToRGBAString,
-    colorToRGBString,
-    hexStringToColor,
-    hexToColor,
-    lerpColor,
-} from '@lib/color';
+import { type Color, colorToHex, colorToHexString, colorToRGBAString, colorToRGBString, hexStringToColor, hexToColor, lerpColor } from '@lib/color';
 
 describe('@lib/utils/color', () => {
     describe('lerpColor', () => {

@@ -63,9 +63,7 @@ describe('@lib/utils/general', () => {
         test('should not throw an error on falsy values', () => {
             const map = new Map<string, unknown>();
             const expected = [0, false, null, '', Number.NaN];
-            const actual = ['test', 'test2', 'test3', 'test4', 'test5'].map((key, i) =>
-                mapGetOrCreate(map, key, () => expected[i]),
-            );
+            const actual = ['test', 'test2', 'test3', 'test4', 'test5'].map((key, i) => mapGetOrCreate(map, key, () => expected[i]));
             expect(actual).toEqual(expected);
         });
 

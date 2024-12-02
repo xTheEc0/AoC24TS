@@ -144,9 +144,7 @@ const DayArgumentValidator = /(?<=day)\d+(?!\w)/;
         }
 
         console.log(`\n${chalk.green('done!')} ${dayName} created!`);
-        console.log(
-            `\n${chalk.bold(chalk.yellow(`Visit https://adventofcode.com/${year}/day/${dayNumber} for the puzzle details`))}`,
-        );
+        console.log(`\n${chalk.bold(chalk.yellow(`Visit https://adventofcode.com/${year}/day/${dayNumber} for the puzzle details`))}`);
     } catch (err) {
         console.error(err);
     }

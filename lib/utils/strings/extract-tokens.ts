@@ -1,9 +1,7 @@
 import { StringView } from '@lib/string-view';
 import type { Tokens } from './tokens';
 
-type Token<C extends Tokens[]> = C extends [infer First extends Tokens, ...infer Rest extends Tokens[]]
-    ? [ReturnType<First>, ...Token<Rest>]
-    : [];
+type Token<C extends Tokens[]> = C extends [infer First extends Tokens, ...infer Rest extends Tokens[]] ? [ReturnType<First>, ...Token<Rest>] : [];
 
 export function extractTokens<C extends Tokens[]>(parts: TemplateStringsArray, ...parsers: C) {
     const buffer = new StringView('');

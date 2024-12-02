@@ -2,12 +2,8 @@
 
 function isLevelSafe(report: number[]): boolean {
     return (
-        report.every(
-            (level, index) => index === 0 || (level - report[index - 1] >= 1 && level - report[index - 1] <= 3),
-        ) ||
-        report.every(
-            (level, index) => index === 0 || (level - report[index - 1] <= -1 && level - report[index - 1] >= -3),
-        )
+        report.every((level, index) => index === 0 || (level - report[index - 1] >= 1 && level - report[index - 1] <= 3)) ||
+        report.every((level, index) => index === 0 || (level - report[index - 1] <= -1 && level - report[index - 1] >= -3))
     );
 }
 
