@@ -31,12 +31,14 @@ if (input !== '') {
     });
 }
 
-test('part two test', () => {
-    expect(part2(testInput)).toBe(6);
+test('part two test', async () => {
+    const result = await part2(testInput);
+    expect(result).toBe(6);
 });
 
 if (input !== '') {
-    test('part two answer', () => {
-        expect(part2(input)).toBe(1686);
+    test('part two answer', async () => {
+        const result = await part2(input);
+        expect(result).toBe(1686);
     });
 }

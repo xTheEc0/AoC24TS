@@ -9,9 +9,7 @@ try {
     // ignore
 }
 
-test('part one test', () => {
-    expect(
-        part1(`
+const testInput = `
 MMMSXXMASM
 MSAMXMSMSA
 AMXSXMAAMM
@@ -22,8 +20,10 @@ SMSMSASXSS
 SAXAMASAAA
 MAMMMXMMMM
 MXMXAXMASX
-`),
-    ).toBe(18);
+`.trim();
+
+test('part one test', () => {
+    expect(part1(testInput)).toBe(18);
 });
 
 if (input !== '') {
@@ -33,20 +33,7 @@ if (input !== '') {
 }
 
 test('part two test', () => {
-    expect(
-        part2(`
-MMMSXXMASM
-MSAMXMSMSA
-AMXSXMAAMM
-MSAMASMSMX
-XMASAMXAMM
-XXAMMXXAMA
-SMSMSASXSS
-SAXAMASAAA
-MAMMMXMMMM
-MXMXAXMASX
-`),
-    ).toBe(9);
+    expect(part2(testInput)).toBe(9);
 });
 
 if (input !== '') {

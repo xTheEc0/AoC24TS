@@ -9,16 +9,16 @@ try {
     // ignore
 }
 
-test('part one test', () => {
-    expect(
-        part1(`
+const testInput = `
 3   4
 4   3
 2   5
 1   3
 3   9
-3   3`),
-    ).toBe(11);
+3   3`.trim();
+
+test('part one test', () => {
+    expect(part1(testInput)).toBe(11);
 });
 
 if (input !== '') {
@@ -28,15 +28,7 @@ if (input !== '') {
 }
 
 test('part two test', () => {
-    expect(
-        part2(`
-3   4
-4   3
-2   5
-1   3
-3   9
-3   3`),
-    ).toBe(31);
+    expect(part2(testInput)).toBe(31);
 });
 
 if (input !== '') {
