@@ -1,4 +1,4 @@
-// Advent of Code - Day 9 - Part One
+// Advent of Code - Day 9 - Part One (Optimized)
 
 export function part1(input: string): number {
     const disk = parseInput(input);
@@ -31,17 +31,22 @@ export function parseInput(input: string): (number | '.')[] {
 }
 
 function compactDisk(disk: (number | '.')[]): void {
-    while (true) {
-        const leftmostFreeIndex = disk.indexOf('.');
-        const rightmostFileIndex = findRightmostFileBlockIndex(disk);
+    let leftmostFreeIndex = disk.indexOf('.');
+    let rightmostFileIndex = disk.length - 1;
 
-        // If there is no free space or no files, break the loop
+    // Move rightmostFileIndex to the last file block
+    while (rightmostFileIndex >= 0 && disk[rightmostFileIndex] === '.') {
+        rightmostFileIndex--;
+    }
+
+    while (true) {
+        // If there is no free space or no file blocks left, break
         if (leftmostFreeIndex === -1 || rightmostFileIndex === -1) {
             break;
         }
 
-        // If the leftmost free index is after the rightmost file block, then no more moves can be made
-        if (leftmostFreeIndex > rightmostFileIndex) {
+        // If the leftmostFreeIndex is beyond rightmostFileIndex, break
+        if (leftmostFreeIndex >= rightmostFileIndex) {
             break;
         }
 
@@ -49,16 +54,21 @@ function compactDisk(disk: (number | '.')[]): void {
         const fileID = disk[rightmostFileIndex] as number;
         disk[rightmostFileIndex] = '.';
         disk[leftmostFreeIndex] = fileID;
-    }
-}
 
-function findRightmostFileBlockIndex(disk: (number | '.')[]): number {
-    for (let i = disk.length - 1; i >= 0; i--) {
-        if (disk[i] !== '.') {
-            return i;
+        // Move leftmostFreeIndex to the next free space
+        do {
+            leftmostFreeIndex++;
+        } while (leftmostFreeIndex < disk.length && disk[leftmostFreeIndex] !== '.');
+
+        if (leftmostFreeIndex >= rightmostFileIndex) {
+            break;
         }
+
+        // Move rightmostFileIndex to the previous file block
+        do {
+            rightmostFileIndex--;
+        } while (rightmostFileIndex >= 0 && disk[rightmostFileIndex] === '.');
     }
-    return -1; // No file blocks found
 }
 
 export function calculateChecksum(disk: (number | '.')[]): number {
