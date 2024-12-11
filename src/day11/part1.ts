@@ -1,6 +1,6 @@
 // Advent of Code - Day 11 - Part One
 
-export function part1(input: string): number {
+export function part1(input: string, t = 25): number {
     const initialStones = parseInput(input);
     const memo = new Map<string, bigint>();
     const counts = new Map<bigint, bigint>();
@@ -9,27 +9,28 @@ export function part1(input: string): number {
     }
     let total = 0n;
     for (const [n, count] of counts.entries()) {
-        const stonesFromN = totalStones(n, 25, memo);
+        const stonesFromN = totalStones(n, t, memo);
         total += stonesFromN * count;
     }
     return Number(total);
 }
 
-export function parseInput(input: string): bigint[] {
+function parseInput(input: string): bigint[] {
     return input
         .trim()
         .split(/\s+/)
         .map((s) => BigInt(s));
 }
 
-export function stonesAfterBlink(n: bigint): bigint[] {
+function stonesAfterBlink(n: bigint): bigint[] {
+    // Rule 1: Zero becomes one
     if (n === 0n) {
         return [1n];
     }
     const s = n.toString();
 
     if (s.length % 2 === 0) {
-        // Even number of digits
+        // Rule 2: Even number of digits
         const L = s.length;
         let leftS = s.slice(0, L / 2);
         let rightS = s.slice(L / 2);
@@ -41,11 +42,11 @@ export function stonesAfterBlink(n: bigint): bigint[] {
         const rightN = BigInt(rightS);
         return [leftN, rightN];
     }
-    // Multiply by 2024
+    // Rule 3: Multiply by 2024
     return [n * 2024n];
 }
 
-export function totalStones(n: bigint, t: number, memo: Map<string, bigint>): bigint {
+function totalStones(n: bigint, t: number, memo: Map<string, bigint>): bigint {
     if (t === 0) {
         return 1n;
     }
